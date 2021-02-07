@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// 하나의 HTML 덩어리
 function App() {
   let [글제목, 글제목변경] = useState([
     "남자 코트 추천",
@@ -10,6 +11,14 @@ function App() {
   ]);
 
   let [따봉, 따봉변경] = useState(0);
+
+  let [modal, modal변경] = useState(false);
+
+  // var 어레이 = [2, 3, 4];
+
+  // var 뉴어레이 = 어레이.map(function (a) {
+  //   return a * 2;
+  // });
 
   /*
   function 제목바꾸기() {
@@ -44,23 +53,33 @@ function App() {
         <hr />
       </div>
       <div className="list">
-        <h3>{글제목[2]}</h3>
+        <h3
+          onClick={() => {
+            modal변경(true);
+          }}
+        >
+          {글제목[2]}
+        </h3>
         <p>2월 9일 발행</p>
         <hr />
       </div>
 
-      <div className="modal">
-        <h2>제목</h2>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
+      {글제목.map(function (a) {
+        return <div>안녕</div>;
+      })}
+
+      {modal === true ? <Modal /> : null}
     </div>
   );
 }
 
-function Modal(){
-  return(
-    
-  )
+function Modal() {
+  return (
+    <div className="modal">
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
 }
 export default App;
